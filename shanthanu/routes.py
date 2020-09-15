@@ -38,7 +38,7 @@ def blog_index():
         table_data = pd.read_sql('SELECT * FROM POST WHERE LOWER(category) NOT LIKE \'portfolio\';', db.session.bind)
     if not table_data.empty:
         table_data['date_created'] = table_data.date_created.dt.strftime('%d %b, %Y')
-    table_data = table_data[['id', 'title', 'tags', 'date_created']]
+    table_data = table_data[['id', 'title', 'description', 'tags', 'date_created']]
     return render_template('blog_index.html', title='thoughts', table_data=table_data)
 
 
