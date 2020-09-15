@@ -23,6 +23,26 @@ body {
 
 }
 
+.social-buttons-images {
+    position: relative;
+    z-index: 100;
+}
+
+.social-buttons img {
+    width: 50px;
+    height: 50px;
+    background-color: var(--base-color);
+    opacity: 0.8;
+}
+
+.social-buttons img:hover {
+    opacity: 1;
+}
+
+.social-buttons a:hover {
+    text-decoration: none;
+}
+
 .intro-screen {
     background: var(--base-color);
     color: var(--base-text);
@@ -179,7 +199,6 @@ body {
     width: 100vw;
     height: 100vh;
     opacity: 0.3;
-
 }
 
 /* mobile devices */
@@ -280,5 +299,20 @@ body {
         padding: 1rem 0;
         z-index: 8;
 
+    }
+
+    .form-elements {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-elements span {
+        margin-top: 0.25rem;
+    }
+
+    .social-buttons img {
+        width: 35px;
+        height: 35px;
+        opacity: 1;
     }
 }

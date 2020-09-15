@@ -22,20 +22,20 @@
         <h1>{{ title }}</h1>
         <h3>Change Password</h3>
         <form action="" method="post">
-            {{ form.hidden_tag() }}
-            {{ form.password.label() }}
-            {{ form.password() }}
-            {{ form.confirm.label() }}
-            {{ form.confirm() }}
-            {{ form.submit() }}<br/>
-            {% if form.password.errors %}
-                {% for error in form.password.errors %}
-                    {{ error }}
-                {% endfor %}
-            {% endif %}
+            <div class="form-elements">
+                {{ form.hidden_tag() }}
+                <span>{{ form.password(placeholder='new password') }}</span>
+                <span>{{ form.confirm(placeholder='confirm password') }}</span><br/>
+                {{ form.submit() }}<br/>
+                {% if form.password.errors %}
+                    {% for error in form.password.errors %}
+                        {{ error }}
+                    {% endfor %}
+                {% endif %}
+            </div>
         </form>
-        {% if error %}
-            <p class="error">{{ error }}</p>
+        {% if message %}
+            <p class="error">{{ message }}</p>
         {% endif %}
     </div>
 {% endblock %}

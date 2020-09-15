@@ -22,11 +22,14 @@
         <h1>Please login</h1>
         <br>
         <form action="" method="post">
-            {{ form.hidden_tag() }}
-            {{ form.username() }}
-            {{ form.password() }}
-            {{ form.remember_me() }}
-            {{ form.submit() }}
+            <div class="form-elements">
+                <span>{{ form.hidden_tag() }}</span>
+                <span>{{ form.username(placeholder='username') }}</span>
+                <span>{{ form.password(placeholder='password') }}</span><br/>
+                <span>{{ form.remember_me() }}
+                {{ form.remember_me.label() }}</span>
+                {{ form.submit() }}
+            </div>
         </form>
         {% if error %}
             <p class="error"><strong>Error:</strong> {{ error }}

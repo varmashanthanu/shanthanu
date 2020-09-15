@@ -16,6 +16,19 @@
                 {#                     "ecision Science", #}
             </span>
             </div>
+            <div class="social-buttons">
+                <div class="social-buttons-images">
+                    <a href="https://www.linkedin.com/in/shanthanuvarma" target="_blank">
+                        <img class="slow-appear" style="display: none;" src="https://i.imgur.com/GPwCrDC.png"/>
+                    </a>
+                    <a href="https://angel.co/u/shanthanu-varma" target="_blank">
+                        <img class="slow-appear" style="display: none;" src="https://i.imgur.com/r6vw2eu.png"/>
+                    </a>
+                    <a href="mailto:varma.shanthanu@gmail.com">
+                        <img class="slow-appear" style="display: none;" src="https://i.imgur.com/1jM41du.png"/>
+                    </a>
+                </div>
+            </div>
 
 
         </div>
@@ -103,8 +116,8 @@
 
 
         $(document).ready(function () {
-                var density = 10000;
-            if ($(window).width() < 1000 ) {
+            var density = 10000;
+            if ($(window).width() < 1000) {
                 density = 5000;
             }
             $('.particles').particleground({
@@ -128,6 +141,7 @@
                 onDestroy: function () {
                 }
             });
+            $('.slow-appear').show(4000);
         });
 
         function makeNewPosition() {

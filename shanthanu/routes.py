@@ -96,17 +96,17 @@ def logout():
 @login_required
 def admin():
     form = PasswordForm()
-    error = None
+    message = None
     if request.method == 'POST' and form.validate_on_submit():
         if form.validate_on_submit():
             user = User.query.filter_by(username='admin').first()
             user.set_password(form.password.data)
             db.session.add(user)
             db.session.commit()
-            error = 'Successfully changed password'
+            message = 'Successfully changed password'
         else:
-            error = 'Failed'
-    return render_template('admin.html', form=form, title='Admin Dashboard', error=error)
+            message = 'Failed'
+    return render_template('admin.html', form=form, title='Admin Dashboard', message=message)
 
 
 @app.route('/add_blog', methods=['GET', 'POST'])
