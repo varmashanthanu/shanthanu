@@ -29,6 +29,7 @@ h1 {
 pre {
     border-radius: 0.5rem;
     border: solid 1px var(--base-color);
+    color: rgb(201, 65, 137);
     background-color: aliceblue;
     padding: 0.4rem 1rem;
     box-shadow: inset -2px 2px 1px 3px rgba(0, 34, 26, 0.2);
