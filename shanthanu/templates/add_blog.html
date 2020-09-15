@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+{% block head_content %}
+    <!-- include libraries(jQuery, bootstrap) -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='blog.css') }}">
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+{% endblock %}
+{% block content %}
+    <div class="sub-wrapper">
+        <div class="navigation-top">
+            <div class="nv-ca">
+                <ul>
+                    <li class="nv-la"><a href="{{ url_for('home') }}">HOME</a></li>
+                    <li><a href="{{ url_for('blog_index') }}">THOUGHTS</a></li>
+                    <li><a href="{{ url_for('portfolio') }}">PORTFOLIO</a></li>
+                    <li><a href="{{ url_for('about') }}">ABOUT</a></li>
+                </ul>
+            </div>
+            <button class="hamburger hamburger--spin-r" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+        </div>
+        <h1>{{ title }}</h1>
+        {#        {% if current_user.is_authenticated %}#}
+        {#            <div class="admin-control">#}
+        {#                <a href="{{ url_for('edit_blog', post_id=post_id) }}"><span class="btn">edit</span></a>#}
+        {#                <a href="#"><span class="btn delete">delete</span></a>#}
+        {#                <a href="{{ url_for('delete_blog', post_id=post_id) }}"><span#}
+        {#                        class="btn confirm">really delete</span></a>#}
+        {#                <a href="#"><span class="btn cancel"><small>X</small></span></a>#}
+        {#            </div>#}
+        {#        {% endif %}#}
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+
+            {{ form.title(placeholder='Title') }}<br/><br/>
+            {{ form.category(placeholder='Category') }}<br/><br/>
+            {{ form.description(placeholder='Short Description') }}<br/><br/>
+            {{ form.body(id='summernote', placeholder='Enter Content Here...') }}<br/>
+            {{ form.tags(placeholder='tags') }}<br/><br/>
+
+            {{ form.submit() }}
+        </form>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            $('#summernote').summernote({
+                height: 300,                 // set editor height
+                width: $(window).width()*0.90,
+                minHeight: null,             // set minimum height of editor
+                maxHeight: null,             // set maximum height of editor
+                focus: true                  // set focus to editable area after initializing summernote
+            });
+        });
+    </script>
+{% endblock %}

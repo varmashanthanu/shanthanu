@@ -1,0 +1,147 @@
+
+.left-color-box {
+    margin: 0;
+    height: 100vh;
+    width: 25vw;
+    position: fixed;
+    background: red;
+    z-index: -1;
+    font-family: var(--poiret-one);
+    color: var(--base-contrast-text);
+}
+
+.page-content {
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    width: 85%;
+    float: right;
+}
+
+.content-section {
+    min-height: 77vh;
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*border: solid blue 1px;*/
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+
+}
+
+.image-block {
+    display: inline-block;
+}
+
+.text-block {
+    display: inline-block;
+    width: 55vw;
+    text-align: justify;
+}
+
+
+img {
+    height: 150px;
+    width: 150px;
+    /*padding: 1px 1px 2px 2px;*/
+    /*border: solid 1px red;*/
+    border-radius: 100%;
+}
+
+
+.left-block {
+    /*border: solid 1px black;*/
+    text-align: center;
+    height: 100vh;
+    padding: 50vh 0;
+}
+
+.right-block {
+    float: right;
+    /*border: solid 1px violet;*/
+    width: 100%;
+}
+
+.toggle-overview, .tech-specs {
+    display: none;
+}
+
+.toggle-tech-specs, .toggle-overview {
+    border-radius: 1rem;
+    border: solid 3px var(--base-contrast-text);
+    padding: 0.3rem 1rem;
+}
+
+.toggle-overview:hover, .toggle-tech-specs:hover {
+    cursor: pointer;
+}
+
+/* mobile views */
+
+@media only screen and (max-device-width: 700px) {
+    .left-color-box {
+        height: 20vh;
+        width: 100vw;
+        z-index: 0;
+    }
+
+    .left-block {
+        /*border: solid 1px black;*/
+        text-align: center;
+        height: 20vh;
+        width: 100%;
+        padding: 5vh;
+    }
+
+    .page-content {
+        margin-top: 10vh;
+        width: 95vw;
+        float: none;
+        display: flex;
+        justify-content: center;
+    }
+
+    .content {
+        /*display: flex;*/
+        /*top: 20vh;*/
+        width: 95%;
+        padding: 2rem 0;
+        flex-direction: column;
+        /*align-items: center;*/
+        /*justify-content: space-evenly;*/
+        /*width: 100%;*/
+
+    }
+
+    .content-section {
+        min-height: 77vh;
+        width: inherit;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /*border: solid blue 1px;*/
+    }
+
+    .text-block {
+        width: 90%;
+        margin-top: 5vh;
+    }
+
+    .right-block {
+        float: none;
+        /*border: solid 1px violet;*/
+        width: inherit;
+    }
+
+    .toggle-tech-specs, .toggle-overview {
+        border-radius: 1rem;
+        border: solid 1px var(--base-contrast-text);
+        padding: 0.3rem 1rem;
+    }
+}

@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+{% block head_content %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='blog.css') }}">
+{% endblock %}
+{% block content %}
+    <div class="sub-wrapper">
+        <div class="navigation-top">
+            <div class="nv-ca">
+                <ul>
+                    <li class="nv-la"><a href="{{ url_for('home') }}">HOME</a></li>
+                    <li><a href="{{ url_for('blog_index') }}">THOUGHTS</a></li>
+                    <li><a href="{{ url_for('portfolio') }}">PORTFOLIO</a></li>
+                    <li><a href="{{ url_for('about') }}">ABOUT</a></li>
+                </ul>
+            </div>
+            <button class="hamburger hamburger--spin-r" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+        </div>
+        <h1>Please login</h1>
+        <br>
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            {{ form.username() }}
+            {{ form.password() }}
+            {{ form.remember_me() }}
+            {{ form.submit() }}
+        </form>
+        {% if error %}
+            <p class="error"><strong>Error:</strong> {{ error }}
+        {% endif %}
+    </div>
+{% endblock %}

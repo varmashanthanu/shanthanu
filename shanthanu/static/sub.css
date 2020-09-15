@@ -1,0 +1,21 @@
+body {
+    background: var(--casual-back);
+}
+
+h1 {
+        font-family: var(--poiret-one);
+}
+
+.section-message {
+    /*border: 1px blue solid;*/
+
+}
+
+.sub-wrapper {
+    /*border: 1px red solid;*/
+    max-width: 90%;
+    margin: auto;
+    font-family: var(--montserrat);
+    /*padding: 5vh 0;*/
+}
+

@@ -1,0 +1,35 @@
+
+.sub-wrapper {
+    max-width: 90%;
+    margin: auto;
+    font-family: var(--montserrat);
+
+}
+
+body {
+    background: #e2f1f6;
+}
+
+h1 {
+    font-family: var(--poiret-one);
+}
+
+.blog-content {
+    padding-bottom: 5rem;
+}
+
+.confirm {
+    display: none;
+}
+
+.cancel {
+    display: none;
+}
+
+pre {
+    border-radius: 0.5rem;
+    border: solid 1px var(--base-color);
+    background-color: aliceblue;
+    padding: 0.4rem 1rem;
+    box-shadow: inset -2px 2px 1px 3px rgba(0, 34, 26, 0.2);
+}

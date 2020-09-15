@@ -1,0 +1,284 @@
+:root {
+    --base-color: #00221a;
+    --base-contrast: #01bab4;
+    --base-text: #01bab4;
+    --base-contrast-text: #00221a;
+    --casual-back: #e2f1f6;
+    --montserrat: 'Montserrat', 'sans-serif';
+    --great-vibes: 'Great Vibes', 'sans-serif';
+    --sacramento: 'Sacramento', 'sans-serif';
+    --poiret-one: 'Poiret One', 'sans-serif';
+}
+
+
+body {
+    margin: 0;
+    background-color: var(--base-color);
+    color: var(--base-contrast-text);
+}
+
+.full-wd-ht {
+    min-width: 100vw;
+    min-height: 100vh;
+
+}
+
+.intro-screen {
+    background: var(--base-color);
+    color: var(--base-text);
+}
+
+.sub-screen {
+    background: var(--base-contrast);
+    margin: 0;
+    word-break: break-word;
+}
+
+.branding-message {
+    text-align: center;
+    padding-top: 45vh;
+    font-size: 2rem;
+    font-family: var(--sacramento);
+}
+
+.heading-message {
+    font-family: var(--poiret-one);
+}
+
+.sub-message {
+    color: var(--base-contrast-text);
+    /*border: red solid 1px;*/
+    padding: 30vh 0 0 0;
+    font-size: 1.8rem;
+}
+
+.sub-message p {
+    padding: 0 20vw;
+    text-align: justify;
+    font-family: var(--poiret-one);
+
+}
+
+.navigation-buttons {
+    text-align: center;
+    font-family: var(--montserrat);
+}
+
+.navigation-buttons ul {
+    align-items: stretch;
+    font-size: 2rem;
+}
+
+.navigation-buttons li {
+    display: inline;
+    padding: 1rem 3rem;
+}
+
+.navigation-buttons a {
+    text-decoration: none;
+    color: aliceblue;
+    padding: 0 2rem;
+    border: 1px var(--base-color) solid;
+    border-radius: 8rem;
+}
+
+.navigation-buttons a:hover {
+    color: var(--base-contrast);
+    background: var(--base-color);
+    text-decoration: none;
+
+}
+
+
+.navigation-top {
+    padding: 5vh 0;
+    /*border: 1px solid red;*/
+    color: var(--base-text) !important;
+}
+
+.nv-ca {
+    /*border: 1px solid green;*/
+
+}
+
+.nv-ca ul {
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.nv-ca li {
+    text-decoration: none;
+    list-style-type: none;
+
+}
+
+.navigation-top a {
+    text-decoration: none !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 10px;
+    color: var(--base-color);
+}
+
+.navigation-top a:hover {
+    background: var(--base-color);
+    color: var(--base-text)
+}
+
+.sub-wrapper {
+    max-width: 90%;
+    margin: auto;
+    font-family: var(--montserrat);
+
+}
+
+
+.admin-control .btn {
+    border: 1px var(--base-color) solid !important;
+    text-transform: uppercase;
+    color: var(--base-text);
+}
+
+.admin-control a {
+    color: inherit;
+    text-decoration: none !important;
+}
+
+.admin-control-float {
+    position: fixed;
+    top: 90vh;
+    left: 90vw;
+}
+
+.admin-control-float span {
+    border: var(--base-color) solid 1px;
+    padding: 0 0.25rem;
+    border-radius: 0.35rem;
+}
+
+.admin-control-float a {
+    text-decoration: none !important;
+
+}
+
+.admin-control-float span:hover {
+    background: var(--base-color);
+    color: var(--base-text);
+}
+
+.mobile-only {
+    display: none;
+}
+
+.hamburger {
+    display: none;
+}
+
+.particles {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.3;
+
+}
+
+/* mobile devices */
+
+@media only screen and (max-device-width: 700px) {
+
+    .sub-message {
+        color: var(--base-contrast-text);
+        /*border: red solid 1px;*/
+        padding: 15vh 0 0 0;
+        font-size: 1rem;
+    }
+
+    .sub-message p {
+        padding: 0 10vw;
+        text-align: justify;
+        font-family: var(--poiret-one);
+
+    }
+
+    .navigation-buttons {
+        text-align: center;
+        font-family: var(--montserrat);
+    }
+
+    .navigation-buttons ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 1rem;
+    }
+
+    .navigation-buttons li {
+        display: block;
+        padding: 0.25rem 1rem;
+    }
+
+    .admin-control-float {
+        position: fixed;
+        top: 90vh;
+        left: 80vw;
+        opacity: 0.8;
+    }
+
+    .mobile-only {
+        display: block;
+    }
+
+    .non-mobile {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+        position: fixed;
+        z-index: 10;
+        top: 1rem;
+        left: 80vw;
+    }
+
+    .navigation-buttons ul {
+        padding: 0;
+    }
+
+    .navigation-buttons li {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .navigation-buttons a {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .nv-ca {
+        display: none;
+        z-index: 8;
+    }
+
+    .nv-ca ul {
+        margin: 0;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 1rem;
+        position: fixed;
+        left: 2.5vw;
+        width: 95vw;
+        background: var(--base-color);
+        z-index: 8;
+    }
+
+    .nv-ca a {
+        color: var(--base-text) !important;
+        z-index: 8;
+    }
+
+    .nv-ca li {
+        padding: 1rem 0;
+        z-index: 8;
+
+    }
+}

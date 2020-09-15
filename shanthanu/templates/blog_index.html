@@ -1,0 +1,86 @@
+{% extends 'layout.html' %}
+{% block head_content %}
+    <script src="{{ url_for('static', filename='js/jquery_datatable.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/datatable_bootstrap.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='sub.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='tables.css') }}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="sub-wrapper">
+        <div class="navigation-top">
+            <div class="nv-ca">
+                <ul>
+                    <li class="nv-la"><a href="{{ url_for('home') }}">HOME</a></li>
+                    <li><a href="{{ url_for('blog_index') }}">THOUGHTS</a></li>
+                    <li><a href="{{ url_for('portfolio') }}">PORTFOLIO</a></li>
+                    <li><a href="{{ url_for('about') }}">ABOUT</a></li>
+                </ul>
+            </div>
+            <button class="hamburger hamburger--spin-r" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+        </div>
+        <h1>{{ title }}</h1>
+        <div class="section-message">
+            <p>
+                Over the past 4 years, I've looked up various resources for various requirements and have had to go
+                back-and-forth between them to execute my tasks. Sometimes, I forget where I found what. This collection
+                of articles is my attempt to gather all those resources into one place for anyone getting started with
+                Python & Analytics, as well as for my own reference.
+            </p>
+        </div>
+        <div class="table-data">
+            <table id="blog-index-table" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th class="non-mobile">Date Created</th>
+                    <th class="non-mobile">Tags</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if table_data.empty %}
+                    <tr>
+                        <td>No</td>
+                        <td>Data</td>
+                        <td class="non-mobile">Yet</td>
+                        <td class="non-mobile">ˆ_ˆˆ_ˆˆ_ˆˆ_ˆˆ_</td>
+                    </tr>
+                {% else %}
+                    {% for i, row in table_data.iterrows() %}
+                        <tr class="clickable-row" data-href="{{ url_for('view_blog', post_id=row['id']) }}">
+                            <td>{{ row['title'] }}</td>
+                            <td>{{ row['description'] }}</td>
+                            <td class="non-mobile">{{ row['date_created'] }}</td>
+                            <td class="non-mobile">{{ row['tags'] }}</td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+        {% if current_user.is_authenticated %}
+            <div class="admin-control">
+                <a href="{{ url_for('add_blog') }}"><span class="btn">New</span></a>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function ($) {
+
+            $('#blog-index-table').DataTable();
+            $('.clickable-row').click(function () {
+
+                window.location.href = $(this).data('href');
+            });
+        });
+    </script>
+{% endblock %}

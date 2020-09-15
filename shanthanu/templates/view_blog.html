@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+{% block head_content %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='blog.css') }}">
+{% endblock %}
+{% block content %}
+    <div class="sub-wrapper">
+        <div class="navigation-top">
+            <div class="nv-ca">
+                <ul>
+                    <li class="nv-la"><a href="{{ url_for('home') }}">HOME</a></li>
+                    <li><a href="{{ url_for('blog_index') }}">THOUGHTS</a></li>
+                    <li><a href="{{ url_for('portfolio') }}">PORTFOLIO</a></li>
+                    <li><a href="{{ url_for('about') }}">ABOUT</a></li>
+                </ul>
+            </div>
+            <button class="hamburger hamburger--spin-r" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+        </div>
+        <h1>{{ title }}</h1>
+        {% if current_user.is_authenticated %}
+            <div class="admin-control">
+                <a href="{{ url_for('edit_blog', post_id=post_id) }}"><span class="btn">edit</span></a>
+                <a href="#"><span class="btn delete">delete</span></a>
+                <a href="{{ url_for('delete_blog', post_id=post_id) }}"><span
+                        class="btn confirm">really delete</span></a>
+                <a href="#"><span class="btn cancel"><small>X</small></span></a>
+            </div>
+        {% endif %}
+        <span>{{ date }}</span><br/>
+        <span>{{ description }}</span><hr/>
+        <div class="blog-content">
+            {{ blog | safe }}
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            $('.delete').click(function () {
+                $(this).hide();
+                $('.confirm').show();
+                $('.cancel').show();
+            });
+
+            $('.cancel').click(function () {
+                $('.delete').show();
+                $(this).hide();
+                $('.confirm').hide()
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,42 @@
+.left-color-box {
+    background: var(--base-color);
+    color: var(--casual-back);
+}
+
+body {
+    background: var(--casual-back) !important;
+}
+
+.page-content {
+    width: 70%;
+}
+
+.content {
+    display: inline !important;
+}
+
+/* mobile views */
+
+@media only screen and (max-device-width: 700px) {
+
+    .page-content {
+        margin-top: 10vh;
+        width: 95vw;
+        float: none;
+        display: flex;
+        justify-content: center;
+    }
+
+    .content {
+        /*display: flex;*/
+        /*top: 20vh;*/
+        width: 95%;
+        padding: 2rem 0;
+        flex-direction: column;
+        /*align-items: center;*/
+        /*justify-content: space-evenly;*/
+        /*width: 100%;*/
+
+    }
+
+}

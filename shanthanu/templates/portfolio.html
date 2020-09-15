@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+{% block head_content %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='about.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='portfolio.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='blog.css') }}">
+{% endblock %}
+{% block content %}
+    <span class="left-color-box">
+        <div class="left-block">
+                <h1>portfolio</h1>
+        </div>
+    </span>
+    <div class="sub-wrapper">
+        <div class="navigation-top">
+            <div class="nv-ca">
+                <ul>
+                    <li class="nv-la"><a href="{{ url_for('home') }}">HOME</a></li>
+                    <li><a href="{{ url_for('blog_index') }}">THOUGHTS</a></li>
+                    <li><a href="{{ url_for('portfolio') }}">PORTFOLIO</a></li>
+                    <li><a href="{{ url_for('about') }}">ABOUT</a></li>
+                </ul>
+            </div>
+            <button class="hamburger hamburger--spin-r" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+        </div>
+        <div class="page-content">
+            <div class="right-block">
+                {% for i, row in data.iterrows() %}
+                    <div class="content-section">
+                        <div class="content">
+                            <h1>{{ row['title'] }}</h1>
+                            {% if current_user.is_authenticated %}
+                                <div class="admin-control">
+                                    <a href="{{ url_for('edit_blog', post_id=row['id']) }}"><span
+                                            class="btn">edit</span></a>
+                                    <span class="btn delete">delete</span>
+                                    <a href="{{ url_for('delete_blog', post_id=row['id']) }}"><span
+                                            class="btn confirm">really delete</span></a>
+                                    <span class="btn cancel"><small>X</small></span>
+                                </div>
+                            {% endif %}
+                            {{ row['body'] | safe }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            $('.delete').click(function () {
+                $(this).hide();
+                $('.confirm').show();
+                $('.cancel').show();
+            });
+
+            $('.cancel').click(function () {
+                $('.delete').show();
+                $(this).hide();
+                $('.confirm').hide()
+            });
+        });
+    </script>
+{% endblock %}

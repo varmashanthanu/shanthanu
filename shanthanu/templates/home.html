@@ -1,0 +1,161 @@
+{% extends 'layout.html' %}
+{% block head_content %}
+    <script src="{{ url_for('static', filename='js/polygonizr.min.js') }}"></script>
+{% endblock %}
+{% block content %}
+    <div class="full-wd-ht intro-screen" id="intro-screen">
+        <div class="particles"></div>
+        <div class="branding-message">
+            <div id="logo-name" class="logo">[&#x222b; &#x221A;]</div>
+            <div id="logo-name" style="font-family: var(--poiret-one)">SHANTHANU VARMA</div>
+            <div class="heading-message">
+                <span>&#12296;d</span><span
+                    class="txt-rotate"
+                    data-period="2000"
+                    data-rotate='[ "ata_analytics&#12297;","ata_science&#12297;", "igital_art&#12297;" ]'>
+                {#                     "ecision Science", #}
+            </span>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="full-wd-ht sub-screen" id="sub-screen">
+        <div class="sub-message">
+            <p>Whenever a threat to human convenience and operational efficiency arises, so will the shadow of
+                <i>Anarisuto</i>, The Analyst.</p>
+            <p>I am the Analyst</p>
+            <p>By day, I'm a humble product analyst who can boost your sales, help plan product directions, and
+                loves
+                playing with dogs. But come night, I don my secret identity and fight inefficient business
+                processes, build application prototypes, and analyze extremely large data sets to understand user
+                behaviour and product health.</p>
+        </div>
+        <div class="navigation-buttons">
+            <ul>
+                <li><a href="{{ url_for('blog_index') }}">THOUGHTS</a></li>
+                <li><a href="{{ url_for('portfolio') }}">PORTFOLIO</a></li>
+                <li><a href="{{ url_for('about') }}">ABOUT</a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script>
+        var TxtRotate = function (el, toRotate, period) {
+            this.toRotate = toRotate;
+            this.el = el;
+            this.loopNum = 0;
+            this.period = parseInt(period, 10) || 500;
+            this.txt = '';
+            this.tick();
+            this.isDeleting = false;
+        };
+
+        TxtRotate.prototype.tick = function () {
+            var i = this.loopNum % this.toRotate.length;
+            var fullTxt = this.toRotate[i];
+
+            if (this.isDeleting) {
+                this.txt = fullTxt.substring(0, this.txt.length - 1);
+            } else {
+                this.txt = fullTxt.substring(0, this.txt.length + 1);
+            }
+
+            this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+
+            var that = this;
+            var delta = 150 - Math.random() * 100;
+
+            if (this.isDeleting) {
+                delta /= 5;
+            }
+
+            if (!this.isDeleting && this.txt === fullTxt) {
+                delta = this.period;
+                this.isDeleting = true;
+            } else if (this.isDeleting && this.txt === '') {
+                this.isDeleting = false;
+                this.loopNum++;
+                delta = 100;
+            }
+
+            setTimeout(function () {
+                that.tick();
+            }, delta);
+        };
+
+        window.onload = function () {
+            var elements = document.getElementsByClassName('txt-rotate');
+            for (var i = 0; i < elements.length; i++) {
+                var toRotate = elements[i].getAttribute('data-rotate');
+                var period = elements[i].getAttribute('data-period');
+                if (toRotate) {
+                    new TxtRotate(elements[i], JSON.parse(toRotate), period);
+                }
+            }
+            // INJECT CSS
+            var css = document.createElement("style");
+            css.type = "text/css";
+            css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+            document.body.appendChild(css);
+        };
+
+
+        $(document).ready(function () {
+                var density = 10000;
+            if ($(window).width() < 1000 ) {
+                density = 5000;
+            }
+            $('.particles').particleground({
+                minSpeedX: 0.1,
+                maxSpeedX: 0.7,
+                minSpeedY: 0.1,
+                maxSpeedY: 0.7,
+                directionX: 'center', // 'center', 'left' or 'right'. 'center' = dots bounce off edges
+                directionY: 'center', // 'center', 'up' or 'down'. 'center' = dots bounce off edges
+                density: density, // How many particles will be generated: one particle every n pixels
+                dotColor: '#666666',
+                lineColor: '#666666',
+                particleRadius: 7, // Dot size
+                lineWidth: 1,
+                curvedLines: false,
+                proximity: 100, // How close two dots need to be before they join
+                parallax: true,
+                parallaxMultiplier: 5, // The lower the number, the more extreme the parallax effect
+                onInit: function () {
+                },
+                onDestroy: function () {
+                }
+            });
+        });
+
+        function makeNewPosition() {
+            // Get viewport dimensions (remove the dimension of the div)
+            var h = $(window).height() - 150;
+            var w = $(window).width() - 150;
+            var nh = Math.floor(Math.random() * h);
+            var nw = Math.floor(Math.random() * w);
+            return [nh, nw];
+        }
+
+        function animateDiv() {
+            var el = $(this);
+            var newq = makeNewPosition();
+            var oldq = $(el).offset();
+            var speed = calcSpeed([oldq.top, oldq.left], newq);
+            $(el).animate({top: newq[0], left: newq[1]}, speed, function () {
+                animateDiv.apply(this);
+            });
+        }
+
+        function calcSpeed(prev, next) {
+            var x = Math.abs(prev[1] - next[1]);
+            var y = Math.abs(prev[0] - next[0]);
+            var greatest = x > y ? x : y;
+            var speedModifier = 0.1;
+            var speed = Math.ceil(greatest / speedModifier);
+            return speed;
+        }
+    </script>
+{% endblock %}

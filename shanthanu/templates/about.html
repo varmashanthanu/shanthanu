@@ -1,0 +1,239 @@
+{% extends 'layout.html' %}
+{% block head_content %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='about.css') }}">
+{% endblock %}
+{% block content %}
+    <span class="left-color-box">
+        <div class="left-block">
+                <h1>me</h1>
+                <h5><span class="toggle-tech-specs toggle">TECH SPECS</span></h5>
+                <h5><span class="toggle-overview toggle">OVERVIEW</span></h5>
+        </div>
+    </span>
+    <div class="sub-wrapper">
+        <div class="navigation-top">
+            <div class="nv-ca">
+                <ul>
+                    <li class="nv-la"><a href="{{ url_for('home') }}">HOME</a></li>
+                    <li><a href="{{ url_for('blog_index') }}">THOUGHTS</a></li>
+                    <li><a href="{{ url_for('portfolio') }}">PORTFOLIO</a></li>
+                    <li><a href="{{ url_for('about') }}">ABOUT</a></li>
+                </ul>
+            </div>
+            <button class="hamburger hamburger--spin-r" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+        </div>
+        <div class="page-content">
+            <div class="right-block overview">
+                <div class="content-section">
+                    <div class="content">
+                        <div class="image-block">
+                            <img src="https://i.imgur.com/jt4lv4p.png"
+                                 class="content-img">
+                        </div>
+                        <div class="text-block">
+                            <p>
+                                I am Shanthanu, an Analyst & Engineer trying to change the way we interact with the
+                                world
+                                around
+                                us.
+                            </p>
+                            <p>
+                                Through my efforts in building solutions towards everyday challenges, I fell in love
+                                with
+                                data
+                                analytics. This website intends to serve as a record of my journey, as a guide perhaps,
+                                for
+                                others
+                                who might choose explore this realm, as well as a collection of my own thoughts around
+                                data
+                                analytics and science.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-section">
+                    <div class="content">
+                        <div class="image-block">
+                            <img src="https://i.imgur.com/8iFY0d3.png"
+                                 class="content-img">
+
+                        </div>
+                        <div class="text-block">
+                            <h4>How it all began</h4>
+                            <p>
+                                Millions of years ago, back in 2009, I developed an Automated Lighting Control System.
+                                I've
+                                always been passionate about energy conservation and automation.<br/><br/>
+                                A simple design, this system contained 2 LDRs and a Gate Logic with a 7400 series IC
+                                right
+                                at
+                                the entrance of a door to detect when a person enters or exits a room, connected to an
+                                Adder
+                                circuit to keep track of how many people are in the room. Room goes empty, lights go
+                                off.
+                                <br/><br/>
+                                Designing this system was probably my first analytical exercise:<br/>
+                                <i>
+                                    Average Power Consumption in facilities to justify the cost<br/>
+                                    Average Walking Speed of a person to set Capacitor release times<br/>
+                                    Average Dimensions of a person to space the LDRs... </i>and then some.<br/><br/>
+                                Watching it all come together in perfect harmony is a moment I'll never forget.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-section">
+                    <div class="content">
+                        <div class="image-block">
+                            <img src="https://i.imgur.com/CmieFSB.png" class="content-img">
+
+                        </div>
+                        <div class="text-block">
+                            <h4>Epiphany</h4>
+                            <p>
+                                Having experienced a high from designing energy efficient systems, I got into
+                                construction.
+                                I wanted to redefine everything we knew about building management systems. <br/><br/>
+                                During this time, I found myself analyzing design operations and automating
+                                the process as most of it was repetitive. Being an Excel Wiz, I created some reusable
+                                templates that could be used for any brand in any system saving a truck load of
+                                time.<br/><br/>
+                                Once again, I found myself straying away from the design activity and spending more time
+                                analyzing various processes and automating them.<br/><br/>
+                                And that's when it hit me: It wasn't necessarily the Systems Design or Energy
+                                Conservation
+                                that drove me. It was the opportunity to Analyze and Improve upon that released my
+                                dopamine.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-section">
+                    <div class="content">
+                        <div class="image-block">
+                            <img src="https://i.imgur.com/CmieFSB.png" class="content-img">
+
+                        </div>
+                        <div class="text-block">
+                            <h4>The Anarisuto</h4>
+                            <p>
+                                This was when I realized what the practical application of Statistics & Probability was,
+                                for
+                                the first time in my life probably.<br/> A few years later, whilst enrolled in a Masters
+                                program,
+                                I tried building a lost & found app. I had to come to terms with the reality that my
+                                skills
+                                in Excel, however advanced, no longer sufficed to perform the analytics I wished to with
+                                the
+                                scale of data I now dealt with. <br/><br/>
+                                I had to evolve<br/><br/>
+                                And so, in an attempt to build the app and everything around it myself, I mastered
+                                Python,
+                                the Django MVC framework, SQL, a variety of Data Analytics principles, and gained a nice
+                                view
+                                into the magic that is Data Science.<br/><br/>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-section">
+                    <div class="content">
+                        <div class="image-block">
+                            <img src="https://i.imgur.com/CXCzWed.png"
+                                 class="content-img">
+
+                        </div>
+                        <div class="text-block">
+                            <p>
+                                My thoughts scattered around this website should (I hope) give anyone who chances down
+                                the
+                                same path as I at least half a leg up.<br/><br>
+                                Oh, and that last image right up here? Yeah, that's made purely on Google Sheets. You
+                                play
+                                with Data Visualization long enough and you'll find yourself painting masterpieces with
+                                data.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-block tech-specs">
+                <div class="content-section">
+                    <div class="content">
+                        <div class="image-block">
+                            <img src="https://i.imgur.com/94FtU0W.png"
+                                 class="content-img">
+                        </div>
+                        <div class="text-block">
+                            <h4>Processor</h4>
+                            <p>
+                                MBA | Hult International Business School (2016, SF, CA)<br/>
+                                B.Tech EEE Bits Pilani (2011, Dubai, UAE)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-section">
+                    <div class="content">
+                        <div class="image-block">
+                            <img src="https://i.imgur.com/KekxEIA.png"
+                                 class="content-img">
+
+                        </div>
+                        <div class="text-block">
+                            <h4>Performance</h4>
+                            <p>
+                                Sr. Product Analyst | <a href="https://www.niki.ai">NIKI</a> (2018-2020)<br/>
+                                Project Manager | Young & Mubeen Controls (2013-2015)<br>
+                                Design Engineer | Jassim Bin Khalid Controls (2011-2013)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-section">
+                    <div class="content">
+                        <div class="image-block">
+                            <img src="https://i.imgur.com/16yGiwZ.png"
+                                 class="content-img">
+
+                        </div>
+                        <div class="text-block">
+                            <h4>Software</h4>
+                            <ul>
+                                <li>Python | Django | MVC</li>
+                                <li>Pandas | NumPy | SciPy | Matplotlib | Seaborn</li>
+                                <li>MySQL | Postgres | Statistical Modeling | Confidence Intervals</li>
+                                <li>Redshift | Grafana | Google Analytics | Data Visualization</li>
+                                <li>HTML | CSS | JS/jQuery</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script>
+        $(document).ready(function ($) {
+            $('.toggle-overview').click(function () {
+                $('.toggle-overview').hide();
+                $('.tech-specs').hide()
+                $('.overview').show();
+                $('.toggle-tech-specs').show();
+            });
+
+            $('.toggle-tech-specs').click(function () {
+                $('.toggle-tech-specs').hide();
+                $('.overview').hide();
+                $('.tech-specs').show()
+                $('.toggle-overview').show();
+            });
+        });
+    </script>
+{% endblock %}
