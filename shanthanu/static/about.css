@@ -4,7 +4,7 @@
     height: 100vh;
     width: 25vw;
     position: fixed;
-    background: red;
+    background: var(--base-contrast);
     z-index: -1;
     font-family: var(--poiret-one);
     color: var(--base-contrast-text);
