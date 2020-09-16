@@ -10,6 +10,10 @@
     color: var(--base-contrast-text);
 }
 
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+    background-color: var(--base-color); /* because the background for this page has the same color as the hamburger icon on other pages*/
+}
+
 .page-content {
     /*display: flex;*/
     /*flex-direction: row;*/

@@ -3,6 +3,10 @@
     color: var(--casual-back);
 }
 
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+    background-color: var(--base-contrast); /* because the background for this page has the same color as the hamburger icon on other pages*/
+}
+
 body {
     background: var(--casual-back) !important;
 }
