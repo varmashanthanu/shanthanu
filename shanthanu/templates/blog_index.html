@@ -76,7 +76,9 @@
     <script>
         $(document).ready(function ($) {
 
-            $('#blog-index-table').DataTable();
+            $('#blog-index-table').DataTable({
+                "order": [[2, "desc"]]
+            });
             $('.clickable-row').click(function () {
 
                 window.location.href = $(this).data('href');
