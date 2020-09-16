@@ -19,20 +19,20 @@
                 </span>
             </button>
         </div>
-        <h1>{{ title }}</h1>
+        <h1>{{ post.title }}</h1>
         {% if current_user.is_authenticated %}
             <div class="admin-control">
-                <a href="{{ url_for('edit_blog', post_id=post_id) }}"><span class="btn">edit</span></a>
+                <a href="{{ url_for('edit_blog', post_id=post.id) }}"><span class="btn">edit</span></a>
                 <a href="#"><span class="btn delete">delete</span></a>
-                <a href="{{ url_for('delete_blog', post_id=post_id) }}"><span
+                <a href="{{ url_for('delete_blog', post_id=post.id) }}"><span
                         class="btn confirm">really delete</span></a>
                 <a href="#"><span class="btn cancel"><small>X</small></span></a>
             </div>
         {% endif %}
-        <span>{{ date }}</span><br/>
-        <span>{{ description }}</span><hr/>
+        <span>{{ post.date }}</span><br/>
+        <span>{{ post.description }}</span><hr/>
         <div class="blog-content">
-            {{ blog | safe }}
+            {{ post.body | safe }}
         </div>
     </div>
 {% endblock %}

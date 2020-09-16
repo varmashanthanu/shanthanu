@@ -44,13 +44,10 @@ def blog_index():
 
 @app.route('/view_blog/<int:post_id>')
 def view_blog(post_id):
+    # todo fix the parameters being sent in the response to consolidated post object
     post = Post.query.get(post_id)
-    title = post.title
-    blog = post.body
-    date = dt.strftime(post.date_created, '%d %b, %Y')
-    description = post.description
-    id = post.id
-    return render_template('view_blog.html', blog=blog, post_id=id, title=title, date=date, description=description)
+    post.date_created = dt.strftime(post.date_created, '%d %b, %Y')
+    return render_template('view_blog.html', post=post)
 
 
 @app.route('/portfolio')
@@ -112,13 +109,14 @@ def admin():
 @app.route('/add_blog', methods=['GET', 'POST'])
 @login_required
 def add_blog():
+    # todo something wrong with the way the post object comes in - made part of the url
     form = PostForm()
     if form.validate_on_submit():
         post = Post()
         post = build_post(post=post, form=form)
         db.session.add(post)
         db.session.commit()
-        return render_template('view_blog.html', title=post.title, blog=post.body, post_id=post.id)
+        return render_template('view_blog.html', post=post)
     return render_template('add_blog.html', title='New Blog', form=form)
 
 
@@ -131,7 +129,7 @@ def edit_blog(post_id):
         post = build_post(post=post, form=form)
         db.session.add(post)
         db.session.commit()
-        return redirect(url_for('view_blog', title=post.title, blog=post.body, post_id=post.id))
+        return redirect(url_for('view_blog', post_id=post.id))
     return render_template('add_blog.html', title=post.title + ' - Edit', form=form)
 
 
