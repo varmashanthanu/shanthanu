@@ -18,6 +18,10 @@ h1 {
     padding-bottom: 5rem;
 }
 
+p {
+    text-align: justify;
+}
+
 .confirm {
     display: none;
 }
