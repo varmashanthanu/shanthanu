@@ -19,6 +19,12 @@ body {
     display: inline !important;
 }
 
+img {
+    width: 300px;
+    height: auto;
+    border-radius: 5%;
+}
+
 /* mobile views */
 
 @media only screen and (max-device-width: 700px) {
@@ -41,6 +47,12 @@ body {
         /*justify-content: space-evenly;*/
         /*width: 100%;*/
 
+    }
+
+    img {
+        width: 90vw !important;
+        height: auto;
+        border-radius: 2.5%;
     }
 
 }
