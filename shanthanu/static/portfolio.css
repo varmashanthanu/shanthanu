@@ -25,6 +25,9 @@ img {
     border-radius: 5%;
 }
 
+.right-block {
+    padding: 10vh 0;
+}
 /* mobile views */
 
 @media only screen and (max-device-width: 700px) {
