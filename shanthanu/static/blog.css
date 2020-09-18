@@ -38,3 +38,9 @@ pre {
     padding: 0.4rem 1rem;
     box-shadow: inset -2px 2px 1px 3px rgba(0, 34, 26, 0.2);
 }
+
+@media only screen and (max-device-width: 700px) {
+    img {
+        width: 90vw !important;
+    }
+}
