@@ -53,6 +53,7 @@ def view_blog(post_id):
 @app.route('/portfolio')
 def portfolio():
     table_data = pd.read_sql('SELECT * FROM POST WHERE LOWER(category) LIKE \'portfolio\';', db.session.bind)
+    table_data.sort_values(['date_created'], ascending=[0], inplace=True)
     table_data = table_data[['id', 'title', 'body']]
     return render_template('portfolio.html', title='Portfolio', data=table_data)
 
