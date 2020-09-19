@@ -2,6 +2,8 @@
 {% block head_content %}
     <script src="{{ url_for('static', filename='js/jquery_datatable.js') }}"></script>
     <script src="{{ url_for('static', filename='js/datatable_bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/moment.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/datetime-moment.min.js') }}"></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='sub.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='tables.css') }}">
 {% endblock %}
@@ -75,7 +77,7 @@
 {% block scripts %}
     <script>
         $(document).ready(function ($) {
-
+            $.fn.dataTable.moment('DD MMM, YYYY');
             $('#blog-index-table').DataTable({
                 "order": [[2, "desc"]]
             });
@@ -84,5 +86,20 @@
                 window.location.href = $(this).data('href');
             });
         });
+        $.fn.dataTable.moment = function (format, locale) {
+            var types = $.fn.dataTable.ext.type;
+
+            // Add type detection
+            types.detect.unshift(function (d) {
+                return moment(d, format, locale, true).isValid() ?
+                    'moment-' + format :
+                    null;
+            });
+
+            // Add sorting method - use an integer for the sorting
+            types.order['moment-' + format + '-pre'] = function (d) {
+                return moment(d, format, locale, true).unix();
+            };
+        };
     </script>
 {% endblock %}
