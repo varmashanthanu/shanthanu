@@ -14,7 +14,10 @@
         <div class="navigation-top">
             <div class="nv-ca">
                 <ul>
-                    <li class="nv-la"><a href="{{ url_for('home') }}">HOME</a></li>
+                    <li class="nv-la mobile-only"><a href="{{ url_for('home') }}">HOME</a></li>
+                    <li class="nv-la non-mobile nav-logo"><a href="{{ url_for('home') }}">
+                        <img src="https://i.imgur.com/vJs4XEN.png"/>
+                    </a></li>
                     <li><a href="{{ url_for('blog_index') }}">THOUGHTS</a></li>
                     <li><a href="{{ url_for('portfolio') }}">PORTFOLIO</a></li>
                     <li><a href="{{ url_for('about') }}">ABOUT</a></li>

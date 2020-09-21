@@ -20,7 +20,23 @@ body {
 .full-wd-ht {
     min-width: 100vw;
     min-height: 100vh;
+    padding-bottom: 20vh;
+}
 
+.logo img {
+    width: 10vw;
+    height: auto;
+}
+
+.nav-logo img {
+    width: 50px;
+    height: auto;
+    border-radius: 0.5rem;
+    vertical-align: center;
+}
+
+.nav-logo a:hover {
+    background-color: transparent !important;
 }
 
 .social-buttons-images {
@@ -314,5 +330,11 @@ body {
         width: 35px;
         height: 35px;
         opacity: 1;
+    }
+
+
+    .logo img {
+        width: 20vw;
+        height: auto;
     }
 }
