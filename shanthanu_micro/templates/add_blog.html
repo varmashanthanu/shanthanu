@@ -46,7 +46,8 @@
             {{ form.description(placeholder='Short Description') }}<br/><br/>
             {{ form.body(id='summernote', placeholder='Enter Content Here...') }}<br/>
             {{ form.tags(placeholder='tags') }}<br/><br/>
-
+            <span>{{ form.draft() }}
+                {{ form.draft.label() }}</span><br/><br/>
             {{ form.submit() }}
         </form>
     </div>
