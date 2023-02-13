@@ -8,6 +8,6 @@ login.login_view = 'login'
 app.config.from_object('config')
 db = Sql(app)
 
-from shanthanu import routes
+from shanthanu_micro import routes
 # if __name__ == '__main__':
 #     app.run()

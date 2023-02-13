@@ -15,6 +15,7 @@ class PostForm(FlaskForm):
     category = StringField('Category', validators=[DataRequired()])
     description = StringField('Description', validators=[DataRequired()])
     body = TextAreaField('Body', validators=[DataRequired()])
+    draft = BooleanField('Draft')
     tags = StringField('Tags', validators=[DataRequired()])
     submit = SubmitField('Save')
 

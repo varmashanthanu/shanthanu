@@ -1,7 +1,7 @@
 from werkzeug.security import generate_password_hash, check_password_hash
-from shanthanu import db
+from shanthanu_micro import db
 from flask_login import UserMixin
-from shanthanu import login
+from shanthanu_micro import login
 from datetime import datetime
 
 
@@ -33,6 +33,7 @@ class Post(db.Model):
     description = db.Column(db.String(255))
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
     tags = db.Column(db.String(100))
+    draft = db.Column(db.Boolean, default=True)
 
     def __repr__(self):
         return self.title

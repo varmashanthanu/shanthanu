@@ -1,5 +1,5 @@
-from shanthanu import db
-from shanthanu.models import User
+from shanthanu_micro import db
+from shanthanu_micro.models import User
 
 
 def create_admin():

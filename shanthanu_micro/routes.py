@@ -1,11 +1,11 @@
 from flask import render_template, redirect, url_for, request, flash
-from shanthanu import db, app
-from shanthanu.models import User, Post
-from shanthanu.forms import LoginForm, PostForm, PasswordForm
+from shanthanu_micro import db, app
+from shanthanu_micro.models import User, Post
+from shanthanu_micro.forms import LoginForm, PostForm, PasswordForm
 from werkzeug.urls import url_parse
 from flask_login import current_user, login_user, login_required, logout_user
 import pandas as pd
-from shanthanu import admin_control as ac
+from shanthanu_micro import admin_control as ac
 from datetime import datetime as dt
 
 db.create_all()
@@ -22,6 +22,7 @@ def build_post(post, form):
     post.description = form.description.data
     post.body = form.body.data
     post.tags = form.tags.data
+    post.draft = form.draft.data
     return post
 
 
@@ -35,7 +36,7 @@ def blog_index():
     if current_user.is_authenticated:
         table_data = pd.read_sql('SELECT * FROM POST;', db.session.bind)
     else:
-        table_data = pd.read_sql('SELECT * FROM POST WHERE LOWER(category) NOT LIKE \'portfolio\';', db.session.bind)
+        table_data = pd.read_sql('SELECT * FROM POST WHERE LOWER(category) NOT LIKE \'portfolio\' AND draft = False;', db.session.bind)
     if not table_data.empty:
         table_data['date_created'] = table_data.date_created.dt.strftime('%d %b, %Y')
     table_data = table_data[['id', 'title', 'description', 'tags', 'date_created']]
@@ -52,7 +53,13 @@ def view_blog(post_id):
 
 @app.route('/portfolio')
 def portfolio():
-    table_data = pd.read_sql('SELECT * FROM POST WHERE LOWER(category) LIKE \'portfolio\';', db.session.bind)
+    if current_user.is_authenticated:
+        draft_only = False
+    query_statement = 'SELECT * FROM POST WHERE LOWER(category) LIKE \'portfolio\''
+    if draft_only:
+        query_statement += ' AND draft = True'
+    query_statement += ';'
+    table_data = pd.read_sql(query_statement, db.session.bind)
     table_data.sort_values(['date_created'], ascending=[0], inplace=True)
     table_data = table_data[['id', 'title', 'body']]
     return render_template('portfolio.html', title='Portfolio', data=table_data)
