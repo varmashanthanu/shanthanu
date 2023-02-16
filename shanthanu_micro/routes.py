@@ -53,8 +53,9 @@ def view_blog(post_id):
 
 @app.route('/portfolio')
 def portfolio():
-    if current_user.is_authenticated:
-        draft_only = False
+
+    draft_only = False if current_user.is_authenticated else True
+
     query_statement = 'SELECT * FROM POST WHERE LOWER(category) LIKE \'portfolio\''
     if draft_only:
         query_statement += ' AND draft = True'
