@@ -54,11 +54,11 @@ def view_blog(post_id):
 @app.route('/portfolio')
 def portfolio():
 
-    draft_only = False if current_user.is_authenticated else True
+    drafts = True if current_user.is_authenticated else False
 
     query_statement = 'SELECT * FROM POST WHERE LOWER(category) LIKE \'portfolio\''
-    if draft_only:
-        query_statement += ' AND draft = True'
+    if not drafts:
+        query_statement += ' AND draft = False'
     query_statement += ';'
     table_data = pd.read_sql(query_statement, db.session.bind)
     table_data.sort_values(['date_created'], ascending=[0], inplace=True)
